@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Reunión</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="main-content">
+        <div class="section">
+            <h3>Crear Reunión</h3>
+            <form id="crearReunionForm">
+                <label for="tema">Tema:</label>
+                <input type="text" id="tema" name="tema" maxlength="30" required>
+                
+                <label for="fecha">Fecha:</label>
+                <input type="date" id="fecha" name="fecha" required>
+                
+                <label for="hora">Hora:</label>
+                <input type="time" id="hora" name="hora" required>
+                
+                <label for="objetivo">Objetivo:</label>
+                <textarea id="objetivo" name="objetivo" maxlength="100" required></textarea>
+                
+                <label for="tipo">Tipo de Reunión:</label>
+                <select id="tipo" name="tipo" required>
+                    <option value="por_area">Por Área</option>
+                    <option value="general">General</option>
+                </select>
+                
+                <label for="area">Área:</label>
+                <select id="area" name="area" required>
+                    <option value="iot">IOT</option>
+                    <option value="ia">IA</option>
+                    <option value="ciber">CIBERSEGURIDAD</option>
+                    <option value="web">WEB</option>
+                    <option value="general">General</option>
+                </select>
+                
+                <label>Participantes:</label>
+                <div id="participantesLista"></div>
+                <button type="button" id="selectAll">Seleccionar Todos</button>
+                <button type="submit">Crear Reunión</button>
+            </form>
+        </div>
+    </div>
+    <script src="js/crearReunion.js"></script>
+</body>
+</html>
