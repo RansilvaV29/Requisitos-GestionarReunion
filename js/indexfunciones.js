@@ -7,7 +7,9 @@ function cargarReuniones() {
         return;
     }
 
-    reuniones.forEach((reunion) => {
+    reunionesList.innerHTML = ''; // Limpiar la lista antes de cargar
+
+    reuniones.forEach((reunion, index) => {
         const item = document.createElement('div');
         item.className = 'item';
         item.innerHTML = `
@@ -21,6 +23,7 @@ function cargarReuniones() {
                 <p><strong>Participantes previstos:</strong> ${reunion.participantes.join(', ')}</p>
                 <img src="${reunion.codigoQR}" alt="Código QR" style="width: 300px; height: 300px;" />
             </div>
+            <button onclick="eliminarReunion(${index})">Eliminar</button>
         `;
         reunionesList.appendChild(item);
     });
@@ -31,6 +34,29 @@ function convertirHoraAMPM(hora) {
     const hora12 = h % 12 || 12; // Convertir a formato 12 horas
     const ampm = h < 12 ? 'AM' : 'PM';
     return `${hora12}:${m} ${ampm}`;
+}
+
+function eliminarReunion(index) {
+    const reuniones = JSON.parse(localStorage.getItem('reuniones')) || [];
+    const reunion = reuniones[index];
+    const fechaActual = new Date();
+    const fechaReunion = new Date(reunion.fecha);
+
+    // Validar que la reunión no haya pasado
+    if (fechaReunion < fechaActual) {
+        alert('No se puede eliminar una reunión que ya ha pasado.');
+        return;
+    }
+
+    // Solicitar confirmación
+    const confirmacion = confirm(`¿Estás seguro de que deseas eliminar la reunión "${reunion.tema}"? Esta acción no se puede deshacer.`);
+    if (confirmacion) {
+        // Eliminar la reunión
+        reuniones.splice(index, 1);
+        localStorage.setItem('reuniones', JSON.stringify(reuniones));
+        cargarReuniones();
+        alert('Reunión eliminada exitosamente.');
+    }
 }
 
 window.onload = cargarReuniones;
