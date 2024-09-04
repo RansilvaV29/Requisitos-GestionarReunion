@@ -158,12 +158,18 @@ document.addEventListener('DOMContentLoaded', function() {
             codigoQR: '' // Para almacenar la URL del código QR
         };
 
-        // Generar el código QR
-        const detallesReunion = `Tema: ${tema}\nFecha: ${fecha}\nHora: ${hora}\nObjetivo: ${objetivo}\nTipo: ${tipo}\nÁrea: ${area}\nParticipantes: ${participantesSeleccionados.join(', ')}`;
+       const urlRegistroAsistencia = 'https://danielaltm2206.github.io/registroAsistencia/registroAsistencia.html?tema=' + encodeURIComponent(tema) +
+            '&fecha=' + encodeURIComponent(fecha) +
+            '&hora=' + encodeURIComponent(hora) +
+            '&objetivo=' + encodeURIComponent(objetivo) +
+            '&tipo=' + encodeURIComponent(tipo) +
+            '&area=' + encodeURIComponent(area) +
+            '&participantes=' + encodeURIComponent(participantesSeleccionados.join(', '));
+        
         const qrCodeCanvas = document.createElement('canvas');
         $('#codigoQR').empty();
         $('#codigoQR').qrcode({
-            text: detallesReunion,
+            text: urlRegistroAsistencia,
             width: 300,
             height: 300,
             render: 'canvas',
