@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crear Reunión</title>
     <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+
 </head>
 <body>
     <div class="sidebar">
@@ -58,9 +61,11 @@
                 <button type="button" id="deselectAll">Deseleccionar Todos</button> 
                 <input type="submit" id="crearReunion" value="Crear Reunión">
             </form>
+            <h4>Código QR Generado</h4>
+            <div id="codigoQR"></div>
         </div>
     </div>
- 
-    <script src="js/crearReunion.js"></script>
+
+    <script src="js/crearReunion.js"></script> <!-- Aquí se enlaza el script externo -->
 </body>
 </html>
