@@ -26,49 +26,8 @@
     </div>
 
     <!-- Asegúrate de incluir la librería de QR Code en tu HTML -->
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js">
-    </script>
-    <script>
-        function cargarReuniones() {
-            const reuniones = JSON.parse(localStorage.getItem('reuniones')) || [];
-            const reunionesList = document.getElementById('reunionesList');
-
-            if (reuniones.length === 0) {
-                reunionesList.innerHTML = '<p>No hay reuniones programadas.</p>';
-                return;
-            }
-
-            reuniones.forEach((reunion) => {
-                const item = document.createElement('div');
-                item.className = 'item';
-                item.innerHTML = `
-                    <span>${reunion.tema}</span>
-                    <div class="details">
-                        <p><strong>Fecha:</strong> ${reunion.fecha}</p>
-                        <p><strong>Hora:</strong> ${reunion.hora}</p>
-                        <p><strong>Objetivo:</strong> ${reunion.objetivo}</p>
-                        <p><strong>Tipo de reunión:</strong> ${reunion.tipo}</p>
-                        <p><strong>Área:</strong> ${reunion.area}</p>
-                        <p><strong>Participantes previstos:</strong> ${reunion.participantes.join(', ')}</p>
-                        <img src="${reunion.codigoQR}" alt="Código QR" style="width: 300px; height: 300px;" />
-                    </div>
-                    <button onclick="editarReunion()">Editar</button>
-                    <button onclick="borrarReunion()">Borrar</button>
-                `;
-                reunionesList.appendChild(item);
-            });
-        }
-
-        window.onload = cargarReuniones;
-
-        function editarReunion() {
-            alert('Funcionalidad de edición no implementada.');
-        }
-
-        function borrarReunion() {
-            alert('Funcionalidad de borrado no implementada.');
-        }
-    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+    <script src="js/indexfunciones.js"></script>
 </body>
 </html>
