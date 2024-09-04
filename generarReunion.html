@@ -7,6 +7,16 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+    <div class="sidebar">
+        <h2>AsisClub</h2>
+        <ul>
+            <li><a href="generarReunion.html">Crear Reunión</a></li>
+            <li><a href="#">Crear Evento</a></li>
+            <li><a href="#">Gestionar Usuarios</a></li>
+            <li><a href="#">Reporte de asistencia</a></li>
+            <li><a href="#">Historial de asistencias</a></li>
+        </ul>
+    </div>
     <div class="main-content">
         <div class="section">
             <h3>Crear Reunión</h3>
@@ -17,8 +27,8 @@
                 <label for="fecha">Fecha:</label>
                 <input type="date" id="fecha" name="fecha" required>
                 
-                <label for="hora">Hora:</label>
-                <input type="time" id="hora" name="hora" required>
+                <label for="hora">Hora (HH:MM AM/PM):</label>
+                <input type="text" id="hora" name="hora" placeholder="Ej: 07:00 AM" required>
                 
                 <label for="objetivo">Objetivo:</label>
                 <textarea id="objetivo" name="objetivo" maxlength="100" required></textarea>
@@ -38,13 +48,19 @@
                     <option value="general">General</option>
                 </select>
                 
+                <label for="buscadorParticipantes">Buscar Participante:</label><br>
+                <input type="text" id="buscadorParticipantes" placeholder="Buscar...">
+                
                 <label>Participantes:</label>
                 <div id="participantesLista"></div>
+                
                 <button type="button" id="selectAll">Seleccionar Todos</button>
-                <button type="submit">Crear Reunión</button>
+                <button type="button" id="deselectAll">Deseleccionar Todos</button> 
+                <input type="submit" id="crearReunion" value="Crear Reunión">
             </form>
         </div>
     </div>
+ 
     <script src="js/crearReunion.js"></script>
 </body>
 </html>

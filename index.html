@@ -10,7 +10,7 @@
     <div class="sidebar">
         <h2>AsisClub</h2>
         <ul>
-            <li><a href="#">Crear Reunión</a></li>
+            <li><a href="generarReunion.html">Crear Reunión</a></li>
             <li><a href="#">Crear Evento</a></li>
             <li><a href="#">Gestionar Usuarios</a></li>
             <li><a href="#">Reporte de asistencia</a></li>
@@ -19,75 +19,53 @@
     </div>
     <div class="main-content">
         <div class="section">
-            <h3>Eventos</h3>
-            <div class="item">
-                <span>Evento 1</span>
-                <div class="details">
-                    <p><strong>Fecha:</strong> 2024-09-10</p>
-                    <p><strong>Hora:</strong> 10:00 AM</p>
-                    <p><strong>Objetivo:</strong> Objetivo 1</p>
-                    <p><strong>Dirección:</strong> Auditorio de la Biblioteca</p>
-                    <p><strong>Participantes previstos:</strong> Juan, María, Luis</p>
-                </div>
-                <button>Editar</button>
-                <button>Borrar</button>
-            </div>
-            <div class="item">
-                <span>Evento 2</span>
-                <div class="details">
-                    <p><strong>Fecha:</strong> 2024-09-12</p>
-                    <p><strong>Hora:</strong> 02:00 PM</p>
-                    <p><strong>Objetivo:</strong> Objetivo 2</p>
-                    <p><strong>Dirección:</strong> Auditorio DCCO</p>
-                    <p><strong>Participantes previstos:</strong> Ana, Carlos, Elena</p>
-                </div>
-                <button>Editar</button>
-                <button>Borrar</button>
-            </div>
-        </div>
-
-        <div class="section">
-            <h3>Reuniones</h3> <a href="generarReunion.html"><button>Generar Reunión</button></a>
-            <div class="item">
-                <span>Reunión 1</span>
-                <div class="details">
-                    <p><strong>Fecha:</strong> 2024-09-15</p>
-                    <p><strong>Hora:</strong> 09:00 AM</p>
-                    <p><strong>Objetivo:</strong> Objetivo 1</p>
-                    <p><strong>Tipo de reunión:</strong> Por área</p>
-                    <p><strong>Área:</strong> IOT</p>
-                    <p><strong>Participantes previstos:</strong> Pedro, Sofía, Andrés</p>
-                </div>
-                <button>Editar</button>
-                <button>Borrar</button>
-            </div>
-            <div class="item">
-                <span>Reunión 2</span>
-                <div class="details">
-                    <p><strong>Fecha:</strong> 2024-09-15</p>
-                    <p><strong>Hora:</strong> 09:00 AM</p>
-                    <p><strong>Objetivo:</strong> Objetivo 2</p>
-                    <p><strong>Tipo de reunión:</strong> Por área</p>
-                    <p><strong>Área:</strong> WEB</p>
-                    <p><strong>Participantes previstos:</strong> Pedro, Sofía, Andrés</p>
-                </div>
-                <button>Editar</button>
-                <button>Borrar</button>
-            </div>
-            <div class="item">
-                <span>Reunión 3</span>
-                <div class="details">
-                    <p><strong>Fecha:</strong> 2024-09-15</p>
-                    <p><strong>Hora:</strong> 09:00 AM</p>
-                    <p><strong>Objetivo:</strong> Objetivo 3</p>
-                    <p><strong>Tipo de reunión:</strong> General</p>
-                    <p><strong>Área:</strong> Todas</p>
-                    <p><strong>Participantes previstos:</strong> Pedro, Sofía, Andrés</p>
-                </div>
-                <button>Editar</button>
-                <button>Borrar</button>
-            </div>
+            <h3>Reuniones</h3>
+            <a href="generarReunion.html"><button>Generar Reunión</button></a>
+            <div id="reunionesList"></div>
         </div>
     </div>
+
+    <script>
+        // Cargar las reuniones desde el almacenamiento local
+        function cargarReuniones() {
+            const reuniones = JSON.parse(localStorage.getItem('reuniones')) || [];
+            const reunionesList = document.getElementById('reunionesList');
+
+            if (reuniones.length === 0) {
+                reunionesList.innerHTML = '<p>No hay reuniones programadas.</p>';
+                return;
+            }
+
+            reuniones.forEach((reunion) => {
+                const item = document.createElement('div');
+                item.className = 'item';
+                item.innerHTML = `
+                    <span>${reunion.tema}</span>
+                    <div class="details">
+                        <p><strong>Fecha:</strong> ${reunion.fecha}</p>
+                        <p><strong>Hora:</strong> ${reunion.hora}</p>
+                        <p><strong>Objetivo:</strong> ${reunion.objetivo}</p>
+                        <p><strong>Tipo de reunión:</strong> ${reunion.tipo}</p>
+                        <p><strong>Área:</strong> ${reunion.area}</p>
+                        <p><strong>Participantes previstos:</strong> ${reunion.participantes.join(', ')}</p>
+                    </div>
+                    <button onclick="editarReunion()">Editar</button>
+                    <button onclick="borrarReunion()">Borrar</button>
+                `;
+                reunionesList.appendChild(item);
+            });
+        }
+
+        // Cargar las reuniones al cargar la página
+        window.onload = cargarReuniones;
+
+        function editarReunion() {
+            alert('Funcionalidad de edición no implementada.');
+        }
+
+        function borrarReunion() {
+            alert('Funcionalidad de borrado no implementada.');
+        }
+    </script>
 </body>
 </html>
