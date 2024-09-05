@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Reunión</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>AsisClub</h2>
+        <ul>
+            <li><a href="generarReunion.html">Crear Reunión</a></li>
+            <li><a href="#">Crear Evento</a></li>
+            <li><a href="#">Gestionar Usuarios</a></li>
+            <li><a href="#">Reporte de asistencia</a></li>
+            <li><a href="#">Historial de asistencias</a></li>
+        </ul>
+    </div>
+    <div class="main-content">
+        <div class="section">
+            <h3>Editar Reunión</h3>
+            <form id="editarReunionForm">
+                <!-- Aquí van los campos similares a los de generarReunion.html -->
+                <label for="tema">Tema:</label>
+                <input type="text" id="tema" name="tema" maxlength="30" required>
+                
+                <label for="fecha">Fecha:</label>
+                <input type="date" id="fecha" name="fecha" required>
+                
+                <label for="hora">Hora (HH:MM AM/PM):</label>
+                <input type="text" id="hora" name="hora" placeholder="Ej: 07:00 AM" required>
+                
+                <label for="objetivo">Objetivo:</label>
+                <textarea id="objetivo" name="objetivo" maxlength="100" required></textarea>
+                
+                <label for="tipo">Tipo de Reunión:</label>
+                <select id="tipo" name="tipo" required>
+                    <option value="por_area">Por Área</option>
+                    <option value="general">General</option>
+                </select>
+                
+                <label for="area">Área:</label>
+                <select id="area" name="area" required>
+                    <option value="iot">IOT</option>
+                    <option value="ia">IA</option>
+                    <option value="ciber">CIBERSEGURIDAD</option>
+                    <option value="web">WEB</option>
+                    <option value="general">General</option>
+                </select>
+                
+                <label for="buscadorParticipantes">Buscar Participante:</label><br>
+                <input type="text" id="buscadorParticipantes" placeholder="Buscar...">
+                
+                <label>Participantes:</label>
+                <div id="participantesLista"></div>
+                
+                <button type="button" id="selectAll">Seleccionar Todos</button>
+                <button type="button" id="deselectAll">Deseleccionar Todos</button> 
+                <input type="submit" id="editarReunion" value="Guardar Cambios">
+            </form>
+            <h4>Código QR Generado</h4>
+            <div id="codigoQR"></div>
+        </div>
+    </div>
+    <script src="js/editarReunion.js"></script> <!-- Enlaza el script de edición -->
+</body>
+</html>
