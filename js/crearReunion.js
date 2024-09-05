@@ -191,6 +191,7 @@ setTimeout(() => {
     localStorage.setItem('reuniones', JSON.stringify(reuniones));
 
     alert('Reunión creada con éxito.');
+    window.location.href = 'index.html';
 }, 100); // Ajusta el tiempo si es necesario
         
     });
